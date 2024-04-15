@@ -2,7 +2,7 @@ import { Service } from 'typedi';
 import { User } from "./User";
 import { AppDataSource } from "../../data-source";
 
-@Service('UserRepository')
+@Service()
 export default class UserRepository {
     constructor(private userRepository = AppDataSource.getRepository(User)) {}
 

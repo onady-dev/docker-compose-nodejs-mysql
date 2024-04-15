@@ -1,14 +1,12 @@
-import { Container } from 'typedi/types/container.class';
-import { Service } from 'typedi';
+import { Service, Container } from 'typedi';
 import { NextFunction, Request, Response } from "express";
-import { User } from "../entity/user/User";
 import UserService from "../services/UserService";
 
 @Service()
 export class UserController {
     private userService: UserService;
     constructor() {
-        this.userService = Container.get<UserService>('UserService')
+        this.userService = Container.get(UserService)
     }
 
     async find(request: Request, response: Response, next: NextFunction) {

@@ -1,13 +1,12 @@
 import { User } from "./../entity/user/User";
 import UserRepository from "../entity/user/UserRepository";
-import { Service } from "typedi";
-import { Container } from "typedi/types/container.class";
+import { Service, Container } from 'typedi';
 
-@Service('UserService')
+@Service()
 class UserService {
     private userRepository: UserRepository;
     constructor() {
-        this.userRepository = Container.get<UserRepository>('UserRepository')
+        this.userRepository = Container.get(UserRepository)
     }
 
     async find(): Promise<User[]> {
