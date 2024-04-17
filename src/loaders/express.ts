@@ -1,4 +1,4 @@
-import { CustomError } from "./../middleware/CustomError";
+import "express-async-errors";
 import { Routes } from "../routes";
 import * as express from "express";
 import * as bodyParser from "body-parser";
@@ -15,8 +15,8 @@ export default async ({ app }: { app: express.Application }) => {
         (app as any)[route.method](
             route.route,
             validator(route.dto),
-            (req: express.Request, res: express.Response, next: Function) => {
-                const result = new (route.controller as any)()[route.action](req, res, next);
+            async (req: express.Request, res: express.Response, next: Function) => {
+                const result = await new (route.controller as any)()[route.action](req, res, next);
                 if (result instanceof Promise) {
                     result.then((result) => (result !== null && result !== undefined ? res.send(result) : undefined));
                 } else if (result !== null && result !== undefined) {
