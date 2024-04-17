@@ -1,3 +1,4 @@
+import { CustomError } from './CustomError';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 import { Request, Response, NextFunction } from 'express';
@@ -11,7 +12,7 @@ export function validator(type: any): (req: Request, res: Response, next: NextFu
             errors.forEach((err: any) => {
                 constraints.push(err.constraints[Object.keys(err.constraints)[0]])
             })
-            res.status(400).json(constraints);
+            next(new CustomError(`${constraints}`, 400));
         } else {
             req.body = validationObj;
             next();

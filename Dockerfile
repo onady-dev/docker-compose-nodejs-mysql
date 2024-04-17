@@ -34,4 +34,4 @@ RUN chmod +x wait-for-it.sh
 EXPOSE 3000
 
 # Node ENV
-ENV NODE_ENV=development
+ENV NODE_ENV=production

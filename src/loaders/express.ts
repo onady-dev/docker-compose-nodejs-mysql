@@ -1,8 +1,10 @@
+import { CustomError } from "./../middleware/CustomError";
 import { Routes } from "../routes";
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import { validator } from "../middleware/validator";
+import { errorMiddleware } from "../middleware/errorMiddleware";
 
 export default async ({ app }: { app: express.Application }) => {
     //   app.enable('trust proxy');
@@ -24,5 +26,6 @@ export default async ({ app }: { app: express.Application }) => {
         );
     });
 
+    app.use(errorMiddleware);
     return app;
 };
