@@ -11,21 +11,21 @@ export class UserController {
 
     async find(request: Request, response: Response, next: NextFunction) {
         const users = await this.userService.find();
-        response.send(users);
+        response.json(users);
     }
 
     async findOne(request: Request, response: Response) {
         const user = await this.userService.findOne(request.params);
-        response.send(user);
+        response.json(user);
     }
 
     async save(request: Request, response: Response) {
         const user = await this.userService.save(request.body);
-        response.send(user);
+        response.json(user);
     }
 
     async remove(request: Request, response: Response) {
         const result = await this.userService.remove(request.params);
-        response.send(result);
+        response.json(result);
     }
 }

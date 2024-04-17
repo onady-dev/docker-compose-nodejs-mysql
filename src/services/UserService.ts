@@ -1,7 +1,6 @@
 import { User } from "./../entity/user/User";
 import UserRepository from "../entity/user/UserRepository";
 import { Service, Container } from 'typedi';
-
 @Service()
 class UserService {
     private userRepository: UserRepository;
