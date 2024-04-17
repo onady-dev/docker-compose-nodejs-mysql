@@ -24,6 +24,7 @@ services:
       - DB_NAME=test
       - DB_USERNAME=root
       - DB_PASSWORD=test
+      - NODE_ENV=development
     depends_on:
       - db
     ports:

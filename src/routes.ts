@@ -1,3 +1,4 @@
+import { CreateUserDto } from './entity/user/User.dto';
 import { UserController } from "./controller/UserController"
 
 export const Routes = [{
@@ -5,23 +6,20 @@ export const Routes = [{
     route: "/users",
     controller: UserController,
     action: "find",
-    dto: []
 }, {
     method: "get",
     route: "/users/:id",
     controller: UserController,
     action: "findOne",
-    dto: []
 }, {
     method: "post",
     route: "/users",
     controller: UserController,
     action: "save",
-    dto: []
+    dto: CreateUserDto
 }, {
     method: "delete",
     route: "/users/:id",
     controller: UserController,
     action: "remove",
-    dto: []
 }]
