@@ -3,7 +3,7 @@ import { Routes } from "../routes";
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
-import { validator } from "../middleware/validator";
+import { validateMiddleware } from "../middleware/validateMiddleware";
 import { errorMiddleware } from "../middleware/errorMiddleware";
 import morganMiddleware from "../middleware/morganMiddleware";
 
@@ -25,7 +25,7 @@ export default async ({ app }: { app: express.Application }) => {
     Routes.forEach((route) => {
         (app as any)[route.method](
             route.route,
-            validator(route.dto),
+            validateMiddleware(route.dto),
             async (req: express.Request, res: express.Response, next: Function) => {
                 const result = await new (route.controller as any)()[route.action](req, res, next);
                 if (result instanceof Promise) {
