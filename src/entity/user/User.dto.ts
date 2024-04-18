@@ -1,7 +1,7 @@
 import { IsNumber, IsString, Min } from "class-validator";
 import { Expose, Type } from "class-transformer";
 
-export class CreateUserDto {
+export class SaveUserDto {
     @IsString()
     public firstName: string;
     @IsString()
