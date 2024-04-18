@@ -1,5 +1,5 @@
 import expressLoader from "./express";
 
-export default async ({ expressApp }) => {
-    await expressLoader({ app: expressApp });
+export default async ({ app }) => {
+    await expressLoader({ app });
 };
